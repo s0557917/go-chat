@@ -135,7 +135,7 @@
                     event.stopPropagation();
 
                     if((userField.value === "") || (messageField.value === "")) {
-                        alert("Fill out username and message!")
+                        errorMessage("Fill out username and message!")
                         return false
                     } else {
                         sendMessage();
@@ -146,7 +146,7 @@
 
         document.getElementById("sendBtn").addEventListener("click", function() {
             if((userField.value === "") || (messageField.value === "")) {
-                alert("Fill out username and message!")
+                errorMessage("Fill out username and message!")
                 return false
             } else {
                 sendMessage();
@@ -165,6 +165,13 @@
         socket.send(JSON.stringify(jsonData))
         messageField.value = "";
 
+    }
+
+    function errorMessage(msg) {
+        notie.alert({
+            type: "error",
+            text: msg
+        })
     }
 </script>
 </html>
